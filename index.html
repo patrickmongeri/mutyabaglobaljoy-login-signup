@@ -1,0 +1,113 @@
+<!--<?php
+session_start();
+include('include/config.php');
+
+extract($_REQUEST);
+if (isset($save)) {
+  $email = $_POST["email"];
+  $pass = md5($_POST["pass"]);
+  $que = mysqli_query($con, "select * from users where email='$email' && password='$pass'");
+  $row = mysqli_num_rows($que);
+  if ($row) {
+    $_SESSION['email'] = $email;
+    header('location:home.php');
+  } else {
+    $err = "Pls Enter Valid Email or Password";
+  }
+}
+$er = "Make sure the 2 Password Matches";
+?>
+-->
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <title> Welcome to Mutyaba Global Joy </title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Fontawesome CDN Link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div class="container">
+    <input type="checkbox" id="flip">
+
+    <div class="cover">
+      <div class="front">
+        <img src="assets/4.jpeg" alt="Mutyabagj">
+        <div class="text">
+          <span class="text-1"> Welcome to <br> Mutyaba Global Joy</span>
+          <span class="text-2">Let's get connected</span>
+        </div>
+      </div>
+      <div class="back">
+        <img class="backImg" src="assets/4.jpeg" alt="Mutyaba gj">
+        <div class="text">
+          <span class="text-1">with Mutyaba <br> Global Joy</span>
+          <span class="text-2">Let's get started</span>
+        </div>
+      </div>
+    </div>
+    <div class="forms">
+      <div class="form-content">
+        <div class="login-form">
+          <div class="title">Login</div>
+          <form method="POST" action="" enctype="multipart/form-data">
+      
+            <div class="input-boxes">
+              <div class="input-box">
+                <i class="fas fa-envelope"></i>
+                <input type="email" name="email" placeholder="Enter your email" required>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="pass" placeholder="Enter your password" minlength="8" maxlength="12" required>
+              </div>
+              <div class="text"><a href="#">Forgot password?</a></div>
+              <div class="button input-box">
+                <input type="submit" value="Login" name="save">
+              </div>
+              <div class="text sign-up-text">Don't have an account? <label for="flip">Sigup now</label></div>
+            </div>
+          </form>
+        </div>
+
+        <div id="sign" class="signup-form">
+          <div class="title">Signup</div>
+          <form action="#" method="POST">
+           
+            <div class="input-boxes">
+              <div class="input-box">
+                <i class="fas fa-user"></i>
+                <input type="text" name="username" placeholder="Enter your name" required>
+              </div>
+              <div class="input-box">
+                <i class="fas fa-envelope"></i>
+                <input type="email" name="email" placeholder="Enter your email" required>
+              </div>
+              <div class="text ">Atleast 8 characters </div>
+              <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="password" placeholder="Enter password" minlength="8" maxlength="12" required>
+              </div>
+
+              <div class="input-box">
+                <i class="fas fa-lock"></i>
+                <input type="password" name="cpassword" placeholder="Confirm your password" minlength="8" maxlength="12" required>
+              </div>
+              <div class="button input-box">
+                <input type="submit" value="Create Account" name="save">
+              </div>
+              <div class="text sign-up-text">Already have an account? <label for="flip">Login now</label> </div>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
